@@ -1,5 +1,11 @@
 *.iml
 .gradle
+/.idea
+/android/ecoLogic/.idea
+/android/ecoLogic/*.iml
+/android/ecoLogic/*.properties
+/android/ecoLogic/gradlew
+/android/ecoLogic/*.gradle
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
