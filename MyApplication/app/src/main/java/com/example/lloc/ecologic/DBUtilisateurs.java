@@ -20,7 +20,7 @@ public class DBUtilisateurs extends SQLiteOpenHelper {
     Context context;
 
     public DBUtilisateurs(Context context){
-        super(context,TABLE_NAME, null,1);
+        super(context,"DB Utilisateurs", null,1);
         this.context=context;
     }
     @Override
@@ -51,8 +51,13 @@ public class DBUtilisateurs extends SQLiteOpenHelper {
     }
 
     public Cursor getData(){
-        SQLiteDatabase database=this.getWritableDatabase();
+        SQLiteDatabase database=this.getReadableDatabase();
         Cursor donnee= database.rawQuery("Select * from "+TABLE_NAME,null);
+        return donnee;
+    }
+    public Cursor Connect(String mail, String password){
+        SQLiteDatabase database=this.getReadableDatabase();
+        Cursor donnee= database.rawQuery("Select * from "+TABLE_NAME+" where user_mail='"+mail+"' and user_password='"+password+"'",null);
         return donnee;
     }
 }

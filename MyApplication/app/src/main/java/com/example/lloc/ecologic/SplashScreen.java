@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -30,19 +31,23 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
+        dbUtilisateurs=new DBUtilisateurs(this);
 
         if(isOnline()){
 
             ProgressBar pb = (ProgressBar) findViewById(R.id.progressbar);
-            dbUtilisateurs=new DBUtilisateurs(this);
+
+
             pb.getIndeterminateDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
+
             chargerBD();
+
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
 
-                    finish();
+                    Intent intent = new Intent(SplashScreen.this,Connexion.class);
+                    startActivity(intent);
                 }
             }, SPLASH_TIME_OUT);
         }else{
@@ -69,7 +74,8 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     public void chargerBD(){
-        new BackgroundTask().execute();}
+        new BackgroundTask().execute();
+    }
     class BackgroundTask extends AsyncTask<Void,Void,String> {
 
         String json_url;
@@ -106,22 +112,36 @@ public class SplashScreen extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result){
-
-            String[] lignes = result.split("NEWLINE");
-
-            for (String ligne:lignes){
-                String s[]=ligne.split("_");
-
-
-                    Toast.makeText(SplashScreen.this,s[0],Toast.LENGTH_SHORT).show();
-                    //Affiche informations par informations
-
-
-
-
+            RemplirBD(result);
 
             }
         }
+
+    public void RemplirBD(String données){
+
+        String[] lignes = données.split("NEWLINE");
+
+        for (String ligne:lignes) {
+
+            if(ligne.length()<3){
+                // On teste si la donnée est nulle ou pas. Plante si test absent
+                // car le script en arivant aux valeurs de fin rajoute une ligne nulle
+
+
+
+            }else{
+                // On sépare les résultats car ils sont sous la forme Nom_Pseudo_Mdp_Mail
+                //On ajoute les résultats a la BD Locale
+               String s[] = ligne.split("_");
+                AjouterDonnées(s[3],s[1],s[2],s[0]);
+            }
+
+
+        }
+        }
+    public void AjouterDonnées(String nom, String pseudo, String mdp, String mail){
+        dbUtilisateurs.ajout(nom,pseudo,mdp,mail);
+
     }
 
 }
