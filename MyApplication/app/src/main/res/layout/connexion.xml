@@ -35,8 +35,7 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.177" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText5"
@@ -44,7 +43,7 @@
         android:layout_height="20dp"
 
         android:layout_marginTop="196dp"
-        android:background="@android:color/transparent"
+
         android:ems="10"
         android:hint="Adresse mail"
         android:inputType="textPersonName"
@@ -54,7 +53,8 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.466" />
 
     <EditText
         android:id="@+id/editText4"
@@ -62,7 +62,7 @@
         android:layout_height="20dp"
 
         android:layout_marginTop="240dp"
-        android:background="@android:color/transparent"
+
         android:ems="10"
         android:hint="Mot de passe"
         android:inputType="textPassword"
@@ -90,13 +90,13 @@
         android:id="@+id/button27"
         android:layout_width="125dp"
         android:layout_height="50dp"
-        android:layout_marginTop="363dp"
+        android:layout_marginTop="401dp"
         android:background="@android:color/transparent"
         android:text="Inscrivez-vous"
         android:textAlignment="viewStart"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
