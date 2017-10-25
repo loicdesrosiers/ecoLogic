@@ -1,6 +1,7 @@
 package com.example.lloc.ecologic;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -32,9 +33,13 @@ public class Inscription extends AppCompatActivity {
         setContentView(R.layout.inscription);
 
         Eusername =(EditText) findViewById(R.id.username);
+        Eusername.setHintTextColor(Color.WHITE);
         Epassword =(EditText) findViewById(R.id.password);
+        Epassword.setHintTextColor(Color.WHITE);
         Eemail =(EditText) findViewById(R.id.email);
+        Eemail.setHintTextColor(Color.WHITE);
         Epseudo =(EditText) findViewById(R.id.pseudo);
+        Epseudo.setHintTextColor(Color.WHITE);
         signup =(Button) findViewById(R.id.button);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
