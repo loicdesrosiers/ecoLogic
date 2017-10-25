@@ -1,9 +1,6 @@
 <?php
-define('BD_HOST','db699672269.db.1and1.com');
-define('BD_DBNAME','db699672269');
-define('BD_USER','dbo699672269');
-define('BD_PWD','testEcologic');
-define('ERREUR_CONNEXION','Une erreur dans la connexion à la bd');
+require_once('define.php');
+require_once('configuration.php');
 
 $results['error'] = false;
 $results['message'] = [];
@@ -20,8 +17,8 @@ if(!empty($_POST)) {
 
     if(!empty($_POST['pseudo']) && !empty($_POST['password'])) {
 
-        $pseudo = $_POST['pseudo'];
-        $password = $_POST['password'];
+        $pseudo = $variable = preg_replace("/[^_A-Za-z0-9-\.&=]/i",'', $_POST['pseudo']);
+        $password = $variable = preg_replace("/[^_A-Za-z0-9-\.&=]/i",'', $_POST['password']);
 
         $sql = $db->prepare("SELECT * from users where pseudo = :pseudo");
         $sql->execute([":pseudo" => $pseudo]);
@@ -33,15 +30,15 @@ if(!empty($_POST)) {
                 $results['pseudo'] = $row->pseudo;
             } else {
                 $results['error'] = true;
-                $results['message'] = "Pseudo ou mot de passe incorrect";
+                $results['message'] = ERREUR_LOG;
             }
         } else {
             $results['error'] = true;
-            $results['message'] = "Pseudo ou mot de passe incorrect";
+            $results['message'] = ERREUR_LOG;
         }
     } else {
         $results['error'] = true;
-        $results['message'] = "Veuillez remplir tous les champs";
+        $results['message'] = ERREUR_INCOMPLET;
     }
 
     echo json_encode($results);

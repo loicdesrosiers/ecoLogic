@@ -1,9 +1,6 @@
 <?php
-define('BD_HOST','db699672269.db.1and1.com');
-define('BD_DBNAME','db699672269');
-define('BD_USER','dbo699672269');
-define('BD_PWD','testEcologic');
-define('ERREUR_CONNEXION','Une erreur dans la connexion à la bd');
+require_once('define.php');
+require_once('configuration.php');
 
 $results['error'] = false;
 $results['message'] = [];
@@ -28,7 +25,7 @@ if(isset($_GET) and $results['error'] == false) {
 
         if(strlen($pseudo) < 2 || !preg_match("/^[a-zA-Z0-9 _-]+$/", $pseudo) || strlen($pseudo) > 60) {
             $results['error'] = true;
-            $results['message']['pseudo'] = "Pseudo invalide";
+            $results['message']['pseudo'] = ERREUR_PSEUDO;
         } else {
             // Vérifier que le pseudo n'existe pas
             $requete = $db->prepare("select id from users where pseudo = ?");
@@ -36,14 +33,14 @@ if(isset($_GET) and $results['error'] == false) {
             $row = $requete->fetch();
             if($row) {
                 $results['error'] = true;
-                $results['message']['pseudo'] = "Le pseudo est déjà pris";
+                $results['message']['pseudo'] = ERREUR_PSEUDO_DEJA_PRIS;
             }
         }
 
         // vérif de l'email
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $results['error'] = true;
-            $results['message']['email'] = "Email invalide";
+            $results['message']['email'] = ERREUR_EMAIL;
         } else {
             // Vérifier que l'email n'existe pas
 
@@ -52,14 +49,14 @@ if(isset($_GET) and $results['error'] == false) {
             $row = $requete->fetch();
             if($row) {
                 $results['error'] = true;
-                $results['message']['email'] = "L'email existe déjà";
+                $results['message']['email'] = ERREUR_EMAIL_DEJA_PRIS;
             }
         }
 
         // vérif du password
         if($password !== $password2) {
             $results['error'] = true;
-            $results['message']['password'] = "Les mots de passes doivent être identiques";
+            $results['message']['password'] = ERREUR_PASSWORD;
         }
 
         if($results['error'] === false) {
@@ -70,13 +67,13 @@ if(isset($_GET) and $results['error'] == false) {
 
             if(!$sql) {
                 $results['error'] = true;
-                $results['message'] = "Erreur lors de l'inscription";
+                $results['message'] = ERREUR_REGISTER;
             }
 
 
     } else {
         $results['error'] = true;
-        $results['message'] = "Veuillez remplir tous les champs";
+        $results['message'] = ERREUR_INCOMPLET;
     }
 
     echo json_encode($results);
