@@ -14,13 +14,13 @@ try {
 
 }
 
-if(isset($_GET) and $results['error'] == false) {
+if(isset($_POST) and $results['error'] == false) {
 
         // vérif du pseudo
-        $pseudo = $_GET['pseudo'];
-        $email = $_GET['email'];
-        $password = $_GET['password'];
-        $password2 = $_GET['password2'];
+        $pseudo = preg_replace("/[^_A-Za-z0-9-\.&=]/i",'', $_POST['pseudo']);
+        $email = preg_replace("/[^_A-Za-z0-9-\.&=]/i",'', $_POST['email']);
+        $password =  preg_replace("/[^_A-Za-z0-9-\.&=]/i",'', $_POST['password']);
+        $password2 =  preg_replace("/[^_A-Za-z0-9-\.&=]/i",'', $_POST['password2']);
 
 
         if(strlen($pseudo) < 2 || !preg_match("/^[a-zA-Z0-9 _-]+$/", $pseudo) || strlen($pseudo) > 60) {

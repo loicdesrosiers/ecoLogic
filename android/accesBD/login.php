@@ -17,8 +17,8 @@ if(!empty($_POST)) {
 
     if(!empty($_POST['pseudo']) && !empty($_POST['password'])) {
 
-        $pseudo = $variable = preg_replace("/[^_A-Za-z0-9-\.&=]/i",'', $_POST['pseudo']);
-        $password = $variable = preg_replace("/[^_A-Za-z0-9-\.&=]/i",'', $_POST['password']);
+        $pseudo = preg_replace("/[^_A-Za-z0-9-\.&=]/i",'', $_POST['pseudo']);
+        $password = preg_replace("/[^_A-Za-z0-9-\.&=]/i",'', $_POST['password']);
 
         $sql = $db->prepare("SELECT * from users where pseudo = :pseudo");
         $sql->execute([":pseudo" => $pseudo]);
