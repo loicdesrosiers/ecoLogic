@@ -3,10 +3,10 @@
 const DEBUG = true; // production : false; dev : true
 
 // Accès base de données
-const BD_HOST = 'localhost'; //'db699639168.db.1and1.com';
-const BD_DBNAME = 'backoff'; //'db699639168';
-const BD_USER = 'root'; //'dbo69963916';
-const BD_PWD = ''; //'4dm1n4ppl1c4t1on';
+const BD_HOST = 'db699639168.db.1and1.com';
+const BD_DBNAME = 'db699639168';
+const BD_USER = 'dbo699639168';
+const BD_PWD = '4dm1n4ppl1c4t1on';
 // Langue du site
 const LANG ='FR-fr';
 

@@ -1,10 +1,10 @@
 <?php
 
-define('TITRE','BACKOFFICE :: ECOLOGIC');
+define('TITRE','ecologic');
 define('FORM_USERNAME','Nom d\'utilisateur');
 define('FORM_CONNEXION','Se connecter');
 define('FORM_PASSWORD','Password');
-
+define('NAVIG','NAVIGATION');
 define('MESSAGE_SUCC','Vous êtes bien identifier');
 define('MESSAGE_ERR','Erreur de connexion');
 define('MESSAGE_404','Erreur 404, la page demander n\'as pas été trouvé !');
