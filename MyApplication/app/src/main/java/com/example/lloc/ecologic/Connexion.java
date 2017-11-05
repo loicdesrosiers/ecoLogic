@@ -40,18 +40,21 @@ public class Connexion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String mail = email.getText().toString();
+                final String mail = email.getText().toString();
                 String mdp = mot_de_passe.getText().toString();
                 Cursor cursor = db.Connect(mail,mdp);
 
 
                 if ( cursor.moveToNext()){
-                    Toast.makeText(Connexion.this,"Connecté ! ",Toast.LENGTH_SHORT).show();
+                    final String joueur=cursor.getString(0);
+                    Toast.makeText(Connexion.this,"Connecté, Bienvenue "+joueur+" Vous avez "+cursor.getInt(1)+" points",Toast.LENGTH_SHORT).show();
 
                     new android.os.Handler().postDelayed(new Runnable(){
                         @Override
                         public void run (){
                             Intent intent=new Intent(Connexion.this,MenuPrincipal.class);
+                            intent.putExtra("mail",mail);
+                            intent.putExtra("pseudo",joueur);
                             startActivity(intent);
                             finish();
                         }

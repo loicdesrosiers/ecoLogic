@@ -14,14 +14,18 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SplashScreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
         </activity>
         <activity android:name=".Connexion"></activity>
         <activity android:name=".MenuPrincipal"></activity>
         <activity android:name=".Inscription"></activity>
+        <activity android:name=".QCM"></activity>
+        <activity android:name=".Progression"></activity>
+
 
     </application>
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 /**
  * Created by lLoïc on 20/10/2017.
@@ -34,7 +35,7 @@ public class DBUtilisateurs extends SQLiteOpenHelper {
         db.execSQL("DROP IF TABLE EXISTS "+TABLE_NAME);
         onCreate(db);
     }
-    public boolean ajout(String nom, String pseudo, String mdp,String mail){
+    public boolean ajout(String nom, String pseudo, String mdp,String mail,int score){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
 
@@ -42,10 +43,14 @@ public class DBUtilisateurs extends SQLiteOpenHelper {
         contentValues.put(col2,pseudo);
         contentValues.put(col3,mdp);
         contentValues.put(col4,mail);
-        contentValues.put(col5,0);
+        contentValues.put(col5,score);
         long result = db.insert(TABLE_NAME,null,contentValues);
 // Si la donnée s'est mal insérée, result sera a -1 sinon 0
-        if (result==-1)return false;
+        if (result==-1){
+            long resulte=db.update(TABLE_NAME,contentValues,"user_mail=?",new String[]{mail});
+            if (resulte==-1)return false;
+            else return true;
+        }
         else return true;
 
     }
@@ -55,9 +60,16 @@ public class DBUtilisateurs extends SQLiteOpenHelper {
         Cursor donnee= database.rawQuery("Select * from "+TABLE_NAME,null);
         return donnee;
     }
+    public int getScore(String mail){
+        SQLiteDatabase database=this.getReadableDatabase();
+        Cursor donnee= database.rawQuery("Select user_score from "+TABLE_NAME+" where user_mail='"+mail+"'",null);
+        donnee.moveToNext();
+        return donnee.getInt(0);
+
+    }
     public Cursor Connect(String mail, String password){
         SQLiteDatabase database=this.getReadableDatabase();
-        Cursor donnee= database.rawQuery("Select * from "+TABLE_NAME+" where user_mail='"+mail+"' and user_password='"+password+"'",null);
+        Cursor donnee= database.rawQuery("Select user_pseudo,user_score from "+TABLE_NAME+" where user_mail='"+mail+"' and user_password='"+password+"'",null);
         return donnee;
     }
 }

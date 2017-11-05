@@ -26,11 +26,13 @@ public class SplashScreen extends AppCompatActivity {
     String JSON_String;
     private static int SPLASH_TIME_OUT = 6000;
     DBUtilisateurs dbUtilisateurs;
+    DBQCM dbqcm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        dbqcm=new DBQCM(this);
         dbUtilisateurs=new DBUtilisateurs(this);
 
         if(isOnline()){
@@ -39,7 +41,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
             pb.getIndeterminateDrawable().setColorFilter(Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
-
+            chargerQuestions();
             chargerBD();
 
             new Handler().postDelayed(new Runnable() {
@@ -72,6 +74,79 @@ public class SplashScreen extends AppCompatActivity {
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+    public void chargerQuestions(){
+        new ChargerQuestions().execute();
+    }
+    class ChargerQuestions extends AsyncTask<Void,Void,String> {
+
+        String json_url;
+        @Override
+        protected void onPreExecute(){
+            json_url="http://ecologic-lyon1.fr/test/GetQCM.php";
+
+        }
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                URL url =new URL(json_url);
+                HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
+                InputStream inputStream =httpURLConnection.getInputStream();
+                BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder stringBuilder=new StringBuilder();
+
+                while((JSON_String=bufferedReader.readLine())!=null){
+                    stringBuilder.append(JSON_String);
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+        @Override
+        protected void onPostExecute(String result){
+            RemplirBDQuestions(result);
+
+            }
+        }
+
+    public void RemplirBDQuestions(String données){
+
+        String[] lignes = données.split("NEWLINE");
+
+        for (String ligne:lignes) {
+
+            if(ligne.length()<3){
+                // On teste si la donnée est nulle ou pas. Plante si test absent
+                // car le script en arivant aux valeurs de fin rajoute une ligne nulle
+
+
+
+            }else{
+                // On sépare les résultats car ils sont sous la forme Nom_Pseudo_Mdp_Mail
+                //On ajoute les résultats a la BD Locale
+
+               String s[] = ligne.split("_");
+
+                AjouterQuestions(Integer.parseInt(s[0]),s[1],s[2],s[3],s[4],s[5],s[6],s[7],Integer.parseInt(s[8]));
+            }
+
+
+        }
+        }
+    public void AjouterQuestions(int id, String intitule, String reponse1, String reponse2, String reponse3, String reponse4, String bonneReponse,String explication,int score){
+         dbqcm.ajoutQuestions(id,intitule,reponse1,reponse2,reponse3,reponse4,bonneReponse,explication,score);
+
     }
 
     public void chargerBD(){
@@ -115,8 +190,8 @@ public class SplashScreen extends AppCompatActivity {
         protected void onPostExecute(String result){
             RemplirBD(result);
 
-            }
         }
+    }
 
     public void RemplirBD(String données){
 
@@ -133,15 +208,15 @@ public class SplashScreen extends AppCompatActivity {
             }else{
                 // On sépare les résultats car ils sont sous la forme Nom_Pseudo_Mdp_Mail
                 //On ajoute les résultats a la BD Locale
-               String s[] = ligne.split("_");
-                AjouterDonnées(s[3],s[1],s[2],s[0]);
+                String s[] = ligne.split("_");
+                AjouterDonnées(s[3],s[1],s[2],s[0],Integer.parseInt(s[4]));
             }
 
 
         }
-        }
-    public void AjouterDonnées(String nom, String pseudo, String mdp, String mail){
-        dbUtilisateurs.ajout(nom,pseudo,mdp,mail);
+    }
+    public void AjouterDonnées(String nom, String pseudo, String mdp, String mail,int score){
+        dbUtilisateurs.ajout(nom,pseudo,mdp,mail,score);
 
     }
 
