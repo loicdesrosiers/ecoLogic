@@ -10,6 +10,7 @@ define('MESSAGE_ERR','Erreur de connexion');
 define('MESSAGE_404','Erreur 404, la page demander n\'as pas été trouvé !');
 define('MESSAGE_ERR_CON','Accès refusé, identifiant ou mot de passe incorect');
 
+define('FORM_CONNECT','Connectez vous');
 define('MENU_TABLEAU','Tableau de bord');
 define('MENU_DECONNEXION','Déconnexion');
 define('MENU_ACC','Accueil');

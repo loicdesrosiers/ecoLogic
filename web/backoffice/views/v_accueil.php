@@ -6,25 +6,22 @@
 //  En tete
 ?>
 <?php require_once(PATH_VIEWS.'header.php');?>
-
+<div id="acc">
 <!--  Zone message d'alerte -->
 <?php require_once(PATH_VIEWS.'alert.php');?>
 
 <!--  Debut de la page -->
-<form action="index.php?page=membre" class="form-inline" method="POST">
+<form action="index.php?page=membre" class="form-signin" method="POST">
+   <h2 class="form-signin-heading"><?= FORM_CONNECT ?></h2>
   <label class="sr-only" for="username"><?= FORM_USERNAME ?></label>
-  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-    <div class="input-group-addon">@</div>
     <input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
-  </div>
-
   <label class="sr-only" for="password"><?= FORM_PASSWORD ?></label>
   <input type="password" class="form-control mb-2 mr-sm-2 mb-sm-0" name="password" placeholder="Password">
 
-  <button type="submit" class="btn btn-primary"><?= FORM_CONNEXION ?></button>
+  <button type="submit" class="btn btn-lg btn-primary btn-block"><?= FORM_CONNEXION ?></button>
 </form>
 <!--  Fin de la page -->
-
+</div>
 <!--  Pied de page -->
 <?php
 require_once(PATH_VIEWS.'footer.php');
