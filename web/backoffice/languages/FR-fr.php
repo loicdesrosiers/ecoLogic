@@ -15,7 +15,7 @@ define('FORM_CONNECT','Connectez vous');
 define('MENU_TABLEAU','Tableau de bord');
 define('MENU_DECONNEXION','Déconnexion');
 define('MENU_ACC','Accueil');
-define('MODIF_QCM','Modification d\'un QCM');
+define('MODIF_QCM','Modification d\'une question');
 define('FORM_INTITU','Intitulé de la quesiton');
 define('FORM_REP1','Réponse 1');
 define('FORM_REP2','Réponse 2');
@@ -29,3 +29,18 @@ define('QUESTIONFALSE','Erreur dans le formulaire.');
 define('QUESTIONTRUE','Votre question à bien été ajouter.');
 define('FORMVIDE','Un champs est encore vide !');
 define('DELET_QCM','Supprimez une question');
+define('PB_SELECT_QCM','Problème de selection dans la table QCM');
+define('DELOK','La suppression c\'est bien déroulé');
+define('DELPASOK','La suppression ne c\'est pas bien passé');
+
+define('TAB_ID','ID');
+define('TAB_INTITU','Intitulé');
+define('TAB_REP1','Réponse 1');
+define('TAB_REP2','Réponse 2');
+define('TAB_REP3','Réponse 3');
+define('TAB_REP4','Réponse 4');
+define('TAB_GR','Bonne réponse');
+define('TAB_EXPLIC','Explication');
+define('TAB_SCORE','Score');
+
+define('FORM_ID','ID de la question');

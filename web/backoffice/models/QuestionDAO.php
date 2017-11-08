@@ -15,4 +15,27 @@ class QuestionDAO extends DAO {
       return false;
     }
   }
+
+  public function getAllQuestion() {
+    $sql = 'SELECT * FROM questionsQcm';
+    $res = $this->queryAll($sql);
+    if($res) {
+      foreach($res as $value) {
+        $question[] = new Question($value['id'],$value['intitule'],$value['reponse1'],$value['reponse2'],$value['reponse3'],$value['reponse4'],$value['bonnereponse'],$value['explication'],$value['score']);
+      }
+      return $question;
+    } else {
+      return false;
+    }
+  }
+
+  public function deleteQuestion($id) {
+    $sql = 'DELETE from questionsQcm where id = ?';
+    $res = $this->queryBdd($sql,array($id));
+    if($res) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

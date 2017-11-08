@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "A:\\Developpement\\ecoLogic\\android\\ecoLogic\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher_round.png",
+        "source": "A:\\Developpement\\ecoLogic\\android\\ecoLogic\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "A:\\Developpement\\ecoLogic\\android\\ecoLogic\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher.png",
+        "source": "A:\\Developpement\\ecoLogic\\android\\ecoLogic\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    }
+]

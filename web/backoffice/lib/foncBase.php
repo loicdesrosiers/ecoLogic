@@ -5,6 +5,16 @@ function choixAlert($message)
   $alert = array();
   switch($message)
   {
+  case'delpasok':
+    $alert['messageAlert'] = DELPASOK;
+    break;
+  case 'delok':
+    $alert['messageAlert'] = DELOK;
+    $alert['classAlert'] = 'success';
+    break;
+  case 'pb_select_qcm' :
+    $alert['messageAlert'] = PB_SELECT_QCM;
+    break;
   case 'url_non_valide' :
     $alert['messageAlert'] = MESSAGE_404;
     break;

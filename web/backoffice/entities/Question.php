@@ -14,4 +14,56 @@ class Question {
     $this->_explication = $_explication;
     $this->_score = $_score;
   }
+
+  public function getId() {
+    return $this->_id;
+  }
+
+    /**
+     * @return mixed
+     */
+    public function getRep4()
+    {
+        return $this->_rep4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoodrep()
+    {
+        return $this->_goodrep;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExplication()
+    {
+        return $this->_explication;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getScore()
+    {
+        return $this->_score;
+    }
+
+  public function getIntitule() {
+    return $this->_intitule;
+  }
+
+  public function getRep1() {
+    return $this->_rep1;
+  }
+
+  public function getRep2() {
+    return $this->_rep2;
+  }
+
+  public function getRep3() {
+    return $this->_rep3;
+  }
 }

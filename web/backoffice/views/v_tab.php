@@ -6,11 +6,14 @@
 //  En tete
 ?>
 <?php require_once(PATH_VIEWS.'headertab.php');?>
-<div class="pos">
+
+<div class="aler">
 <!--  Zone message d'alerte -->
 <?php require_once(PATH_VIEWS.'alert.php');?>
-
+</div>
 <!--  Debut de la page -->
+<div class="tab">
+<h1 class="display-2"><?php echo "Hello ".$_SESSION['name']." !"; ?></h1>
 <form action="index.php?page=tab" method="post">
 <button name="addqcm" type="submit" class="btn btn-outline-info"><?= ADD_QCM ?></button>
 <button name="updateqcm" type="submit" class="btn btn-outline-info"><?= MODIF_QCM ?></button>

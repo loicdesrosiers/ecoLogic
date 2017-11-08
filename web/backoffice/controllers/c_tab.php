@@ -31,6 +31,7 @@ if($_SESSION['logged'] == 1) {
       $alert = choixAlert('connexion_err');
       $page = "accueil";
     } else {
+      $_SESSION['name'] = $user->getUsername();
       $_SESSION['logged'] = 1;
   		$alert = choixAlert('connexion_succ');
     }
