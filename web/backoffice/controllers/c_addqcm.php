@@ -32,5 +32,5 @@ isset($_POST['rep3']) & isset($_POST['rep4']) & isset($_POST['bonnerep']) & isse
 }
   require_once(PATH_VIEWS.$page.'.php');
 } else {
-  header('Location: index.php?page=accueil')
+  header('Location: index.php?page=accueil');
 }
