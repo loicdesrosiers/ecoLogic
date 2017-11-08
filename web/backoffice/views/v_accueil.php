@@ -11,7 +11,7 @@
 <?php require_once(PATH_VIEWS.'alert.php');?>
 
 <!--  Debut de la page -->
-<form action="index.php?page=membre" class="form-signin" method="POST">
+<form action="index.php?page=tab" class="form-signin" method="POST">
    <h2 class="form-signin-heading"><?= FORM_CONNECT ?></h2>
   <label class="sr-only" for="username"><?= FORM_USERNAME ?></label>
     <input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
