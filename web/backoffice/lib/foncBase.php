@@ -22,6 +22,8 @@ function choixAlert($message)
     $alert['messageAlert'] = QUESTIONTRUE;
     $alert['classAlert'] = 'success';
     break;
+  case 'formvide' :
+    $alert['messageAlert'] = FORMVIDE;
   default :
       $alert['messageAlert'] = MESSAGE_ERR;
   }

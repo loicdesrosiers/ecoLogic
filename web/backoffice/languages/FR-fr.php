@@ -27,3 +27,4 @@ define('FORM_SCORE','Score attribué');
 define('VALID','Validé !');
 define('QUESTIONFALSE','Erreur dans le formulaire.');
 define('QUESTIONTRUE','Votre question à bien été ajouter.');
+define('FORMVIDE','Un champs est encore vide !');
