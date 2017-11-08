@@ -15,6 +15,13 @@ function choixAlert($message)
   case 'connexion_err' :
     $alert['messageAlert'] = MESSAGE_ERR_CON;
     break;
+  case 'questionfalse' :
+    $alert['messageAlert'] = QUESTIONFALSE;
+    break;
+  case 'questiontrue' :
+    $alert['messageAlert'] = QUESTIONTRUE;
+    $alert['classAlert'] = 'success';
+    break;
   default :
       $alert['messageAlert'] = MESSAGE_ERR;
   }
