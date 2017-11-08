@@ -60,7 +60,7 @@ public class Inscription extends AppCompatActivity {
     }
 
     private void register(String name, String email, String password, String pseudo) {
-        String urlsuffix="?username="+name+"&password="+password+"&email="+email+"&pseudo="+pseudo;
+        String urlsuffix="?password="+password+"&email="+email+"&pseudo="+pseudo;
         class RegisterUser extends AsyncTask<String,Void,String> {
 
             ProgressDialog loading;
