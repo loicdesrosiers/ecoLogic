@@ -1,6 +1,6 @@
 <?php
 
-define('TITRE','ecologic');
+define('TITRE','écologic');
 define('FORM_USERNAME','Nom d\'utilisateur');
 define('FORM_CONNEXION','Se connecter');
 define('FORM_PASSWORD','Password');
@@ -14,3 +14,4 @@ define('MENU_TABLEAU','Tableau de bord');
 define('MENU_DECONNEXION','Déconnexion');
 define('MENU_ACC','Accueil');
 define('MENU_ACCES_BO','Accès back office');
+define('SLOGAN','Un joueur en plus et un bien pour notre planète.');
