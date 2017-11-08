@@ -6,7 +6,7 @@
 //  En tete
 ?>
 <?php require_once(PATH_VIEWS.'header.php');?>
-<div id="acc">
+<div class="container">
 <!--  Zone message d'alerte -->
 <?php require_once(PATH_VIEWS.'alert.php');?>
 
@@ -16,7 +16,7 @@
   <label class="sr-only" for="username"><?= FORM_USERNAME ?></label>
     <input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
   <label class="sr-only" for="password"><?= FORM_PASSWORD ?></label>
-  <input type="password" class="form-control mb-2 mr-sm-2 mb-sm-0" name="password" placeholder="Password">
+  <input type="password" id="inputPassword" class="form-control mb-2 mr-sm-2 mb-sm-0" name="password" placeholder="Password">
 
   <button type="submit" class="btn btn-lg btn-primary btn-block"><?= FORM_CONNEXION ?></button>
 </form>
