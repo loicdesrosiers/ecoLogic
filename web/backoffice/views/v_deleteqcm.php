@@ -9,7 +9,7 @@
 <div class="deleteqcm">
 <!--  Zone message d'alerte -->
 <?php require_once(PATH_VIEWS.'alert.php');?>
-
+</div>
 <!--  Debut de la page -->
 <table class="table table-responsive">
   <thead>
@@ -44,7 +44,7 @@
 
   </tbody>
 </table>
-
+<div class="deleteqcm">
 <form method="post" action="index.php?page=deleteqcm">
   <div class="form-group">
     <label for="idQuestion"><?= FORM_ID ?></label>

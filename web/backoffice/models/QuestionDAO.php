@@ -17,11 +17,10 @@ class QuestionDAO extends DAO {
   }
 
   public function getAllQuestion() {
-    $sql = 'SELECT * FROM questionsQcm';
-    $res = $this->queryAll($sql);
+    $res = $this->queryAll('SELECT * from questionsQcm');
     if($res) {
       foreach($res as $value) {
-        $question[] = new Question($value['id'],$value['intitule'],$value['reponse1'],$value['reponse2'],$value['reponse3'],$value['reponse4'],$value['bonnereponse'],$value['explication'],$value['score']);
+        $question[] = new Question($value['ID'],$value['Intitule'],$value['Reponse1'],$value['Reponse2'],$value['Reponse3'],$value['Reponse4'],$value['BonneReponse'],$value['Explication'],$value['Score']);
       }
       return $question;
     } else {

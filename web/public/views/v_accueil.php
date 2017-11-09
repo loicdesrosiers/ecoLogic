@@ -74,7 +74,7 @@
   <div class="parallax"><img src="<?= PATH_IMAGES ?>.background2.jpg" alt="Unsplashed background img 2"></div>
 </div>
 
-<div class="container">
+<!--<div class="container">
   <div class="section">
 
     <div class="row">
@@ -98,7 +98,7 @@
     </div>
   </div>
   <div class="parallax"><img src="<?= PATH_IMAGES ?>.background3.jpg" alt="Unsplashed background img 3"></div>
-</div>
+</div> --!>
 
 <!--  Fin de la page -->
 
