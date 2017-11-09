@@ -15,3 +15,9 @@ define('MENU_DECONNEXION','Déconnexion');
 define('MENU_ACC','Accueil');
 define('MENU_ACCES_BO','Accès back office');
 define('SLOGAN','Un joueur en plus et un bien pour notre planète.');
+define('PUB_AND','Télécharger sur Google Play - sortie prévue en décembre 2017.');
+define('PUB_PRES','Le projet..');
+define('PUB_PRES_DESC','Nous sommes une équipe d\'étudiants en DUT Informatique et cette application est notre projet tuteuré.
+Lors de notre vie étudiante, nous avons constaté un manque de sensibiliastion aux enjeux environnementaux, nous avons décidé de créer une application qui
+sensibilise et incite les utilisateurs à adopter un comportement éco-responsable');
+define('FOO_MADE','Made by écologic');
