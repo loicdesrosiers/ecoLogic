@@ -16,7 +16,6 @@
 <h1 class="display-2"><?php echo "Hello ".$_SESSION['name']." !"; ?></h1>
 <form action="index.php?page=tab" method="post">
 <button name="addqcm" type="submit" class="btn btn-outline-info"><?= ADD_QCM ?></button>
-<button name="updateqcm" type="submit" class="btn btn-outline-info"><?= MODIF_QCM ?></button>
 <button name="deleteqcm" type="submit" class="btn btn-outline-info"><?= DELET_QCM ?></button>
 </form>
 <!--  Fin de la page -->

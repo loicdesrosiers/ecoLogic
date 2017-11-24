@@ -6,9 +6,9 @@ require_once(PATH_MODELS.'DAO.php');
 class QuestionDAO extends DAO {
   private $_res;
 
-  public function addQuestion($_intitule,$_rep1,$_rep2,$_rep3,$_rep4,$_goodrep,$_explication,$_score) {
-    $sql = 'INSERT INTO questionsQcm(intitule,reponse1,reponse2,reponse3,reponse4,bonnereponse,explication,score) values (?,?,?,?,?,?,?,?)';
-    $res = $this->queryBdd($sql,array($_intitule,$_rep1,$_rep2,$_rep3,$_rep4,$_goodrep,$_explication,$_score));
+  public function addQuestion($_score,$_theme,$_intitule,$_rep1,$_rep2,$_rep3,$_rep4,$_goodrep,$_explication) {
+    $sql = 'INSERT INTO questionQcm(score,theme,intitule,reponse1,reponse2,reponse3,reponse4,idReponse,explication) values (?,?,?,?,?,?,?,?,?)';
+    $res = $this->queryBdd($sql,array($_score,$_theme,$_intitule,$_rep1,$_rep2,$_rep3,$_rep4,$_goodrep,$_explication));
     if($res) {
       return true;
     } else {
@@ -17,10 +17,10 @@ class QuestionDAO extends DAO {
   }
 
   public function getAllQuestion() {
-    $res = $this->queryAll('SELECT * from questionsQcm');
+    $res = $this->queryAll('SELECT * from questionQcm');
     if($res) {
       foreach($res as $value) {
-        $question[] = new Question($value['ID'],$value['Intitule'],$value['Reponse1'],$value['Reponse2'],$value['Reponse3'],$value['Reponse4'],$value['BonneReponse'],$value['Explication'],$value['Score']);
+        $question[] = new Question($value['id'],$value['score'],$value['theme'],$value['intitule'],$value['reponse1'],$value['reponse2'],$value['reponse3'],$value['reponse4'],$value['idReponse'],$value['explication']);
       }
       return $question;
     } else {

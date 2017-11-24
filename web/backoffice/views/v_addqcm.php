@@ -17,6 +17,14 @@
     <input type="text" class="form-control" id="intitule" name="intitule" placeholder="1+1=?">
   </div>
   <div class="form-group">
+    <label for="score"><?= FORM_SCORE ?></label>
+    <input type="text" class="form-control" id="score" name="score" placeholder="20">
+  </div>
+  <div class="form-group">
+    <label for="rep1"><?= FORM_THEME ?></label>
+    <input type="text" class="form-control" id="theme" name="theme" placeholder="Mathématiques">
+  </div>
+  <div class="form-group">
     <label for="rep1"><?= FORM_REP1 ?></label>
     <input type="text" class="form-control" id="rep1" name="rep1" placeholder="2">
   </div>
@@ -40,10 +48,7 @@
     <label for="expl"><?= FORM_EXPL ?></label>
     <input type="text" class="form-control" id="expl" name="expl" placeholder="car c'est la vie">
   </div>
-  <div class="form-group">
-    <label for="score"><?= FORM_SCORE ?></label>
-    <input type="text" class="form-control" id="score" name="score" placeholder="20">
-  </div>
+
   <button type="submit" class="btn btn-outline-success"><?= VALID ?></button>
 
 </form>
