@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="info.iut.ecologic.MenuPrincipal">
+
+    <TextView
+        android:id="@+id/TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/BTNUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Users"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV" />
+
+    <Button
+        android:id="@+id/BTNQCMUniqueSolution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Lists Questions"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BTNUsers" />
+
+    <EditText
+        android:id="@+id/ETIntitule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Intitulé"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Ajouter une question :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BTNQCMUniqueSolution" />
+
+    <EditText
+        android:id="@+id/ETRep1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Réponse 1"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/ETIntitule"
+        app:layout_constraintTop_toBottomOf="@+id/ETIntitule" />
+
+    <EditText
+        android:id="@+id/ETRep2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Réponse 2"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/ETRep1"
+        app:layout_constraintTop_toBottomOf="@+id/ETRep1" />
+
+    <EditText
+        android:id="@+id/ETRep3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Réponse 3"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/ETRep2"
+        app:layout_constraintTop_toBottomOf="@+id/ETRep2" />
+
+    <EditText
+        android:id="@+id/ETRep4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Réponse 4"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/ETRep3"
+        app:layout_constraintTop_toBottomOf="@+id/ETRep3" />
+
+    <EditText
+        android:id="@+id/ETBonneRep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Numero bonne reponse"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/ETRep4"
+        app:layout_constraintTop_toBottomOf="@+id/ETRep4" />
+
+    <EditText
+        android:id="@+id/ETExplications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Explications"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/ETBonneRep"
+        app:layout_constraintTop_toBottomOf="@+id/ETBonneRep" />
+
+    <Button
+        android:id="@+id/BTNAjoutQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Ajouter Question"
+        app:layout_constraintBottom_toTopOf="@+id/ETIntitule"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/BTNQCMUniqueSolution"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.754" />
+
+    <EditText
+        android:id="@+id/ETTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Thème"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/BTNAjoutQuestion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.633" />
+
+    <Button
+        android:id="@+id/BTNGO"
+        android:layout_width="65dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="GO"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ETBonneRep" />
+
+</android.support.constraint.ConstraintLayout>

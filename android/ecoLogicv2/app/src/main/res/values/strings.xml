@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">EcoLogic</string>
+
+    <string name="connexion_remplir_champs">Merci de renseigner tous les champs</string>
+    <string name="connexion_erreur_user">Utilisateur incorrect</string>
+    <string name="connexion_email_incorrect">Email incorrect</string>
+    <string name="connexion_reussite">Connexion réussite</string>
+    <string name="connexion_user_inconnu">Utilisateur inconnu</string>
+
+    <string name="inscription_mot_passe_differents">Mots de passe différents</string>
+    <string name="insription_fenetre_confirmer">Est-tu sur de vouloir annuler</string>
+    <string name="insription_email_deja_utilise">Email deja utilisé</string>
+    <string name="inscription_email_existant">Cet email est deja utilisé</string>
+    <string name="inscription_remplir_champs">Merci de remplir tous les champs</string>
+
+
+    <string name="boutton_rester">Rester</string>
+    <string name="boutton_quitter">Quitter</string>
+    <string name="fenetre_titre_confirmer">Confirmer</string>
+
+
+    <string name="description_splashscreen">Background SplashScreen</string>
+
+</resources>
