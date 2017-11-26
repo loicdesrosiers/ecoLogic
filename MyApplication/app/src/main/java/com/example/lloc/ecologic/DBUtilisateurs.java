@@ -7,13 +7,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import java.security.MessageDigest;
+
 /**
  * Created by lLoïc on 20/10/2017.
  */
 
 public class DBUtilisateurs extends SQLiteOpenHelper {
     public static final String TABLE_NAME="Utilisateurs";
-    public static final String col1="user_name";
     public static final String col2="user_pseudo";
     public static final String col3="user_password";
     public static final String col4="user_mail";
@@ -26,7 +27,7 @@ public class DBUtilisateurs extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db){
-        String creerTable= "CREATE TABLE "+TABLE_NAME+" (user_name varchar2(20) , user_mail varchar(30) primary key, user_password varchar(20),user_pseudo varchar2(20), user_score number);";
+        String creerTable= "CREATE TABLE "+TABLE_NAME+" (user_mail varchar2(30) primary key, user_password varchar2(256),user_pseudo varchar2(20), user_score number);";
         db.execSQL(creerTable);
 
     }
@@ -35,11 +36,11 @@ public class DBUtilisateurs extends SQLiteOpenHelper {
         db.execSQL("DROP IF TABLE EXISTS "+TABLE_NAME);
         onCreate(db);
     }
-    public boolean ajout(String nom, String pseudo, String mdp,String mail,int score){
+    public boolean ajout( String pseudo, String mdp,String mail,int score){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
 
-        contentValues.put(col1,nom);
+
         contentValues.put(col2,pseudo);
         contentValues.put(col3,mdp);
         contentValues.put(col4,mail);
@@ -54,7 +55,23 @@ public class DBUtilisateurs extends SQLiteOpenHelper {
         else return true;
 
     }
+    public static String sha256(String base) {
+        try{
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(base.getBytes("UTF-8"));
+            StringBuffer hexString = new StringBuffer();
 
+            for (int i = 0; i < hash.length; i++) {
+                String hex = Integer.toHexString(0xff & hash[i]);
+                if(hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+
+            return hexString.toString();
+        } catch(Exception ex){
+            throw new RuntimeException(ex);
+        }
+    }
     public Cursor getData(){
         SQLiteDatabase database=this.getReadableDatabase();
         Cursor donnee= database.rawQuery("Select * from "+TABLE_NAME,null);
@@ -69,7 +86,7 @@ public class DBUtilisateurs extends SQLiteOpenHelper {
     }
     public Cursor Connect(String mail, String password){
         SQLiteDatabase database=this.getReadableDatabase();
-        Cursor donnee= database.rawQuery("Select user_pseudo,user_score from "+TABLE_NAME+" where user_mail='"+mail+"' and user_password='"+password+"'",null);
+        Cursor donnee= database.rawQuery("Select user_pseudo,user_score from "+TABLE_NAME+" where user_mail='"+mail+"' and user_password='"+sha256(password)+"'",null);
         return donnee;
     }
 }

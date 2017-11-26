@@ -29,8 +29,8 @@ import java.util.Random;
 public class QCM extends AppCompatActivity {
     List<Button> tabboutons=new ArrayList<Button>();
     ArrayList <String>reponsesPossibles=new ArrayList<String>();
-    boolean continuer;
-Random random;
+
+    Random random;
     TextView enonce,numQuestion;
     DBQCM dbqcm=new DBQCM(this);
     int j=0;
@@ -82,6 +82,7 @@ Random random;
                             alertDialog.setTitle("Bien joué !");
                             alertDialog.setMessage(question.getExplication() + ", vous avez gagné " + question.getScore() + " points !");
                             scoreTotal+=question.getScore();
+                            alertDialog.setCancelable(false);
                             alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -93,6 +94,7 @@ Random random;
                             AlertDialog.Builder alertDialog = new AlertDialog.Builder(QCM.this);
                             alertDialog.setTitle("Mauvaise réponse !");
                             alertDialog.setMessage(question.getExplication());
+                            alertDialog.setCancelable(false);
                             alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {

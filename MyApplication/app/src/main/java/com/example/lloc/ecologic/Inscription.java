@@ -23,7 +23,8 @@ import java.net.URL;
  */
 
 public class Inscription extends AppCompatActivity {
-    EditText Eusername, Epassword, Eemail, Epseudo;
+    EditText EpasswordConfirm, Epassword, Eemail, Epseudo;
+    String MAIL,PSEUDO;
     Button signup;
     private static final String REGISTER_URL = "http://ecologic-lyon1.fr/test/Ajout_bd.php";
 
@@ -34,8 +35,8 @@ public class Inscription extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inscription);
 
-        Eusername =(EditText) findViewById(R.id.username);
-        Eusername.setHintTextColor(Color.WHITE);
+        EpasswordConfirm =(EditText) findViewById(R.id.passwordConfirm);
+        EpasswordConfirm.setHintTextColor(Color.WHITE);
         Epassword =(EditText) findViewById(R.id.password);
         Epassword.setHintTextColor(Color.WHITE);
         Eemail =(EditText) findViewById(R.id.email);
@@ -52,15 +53,22 @@ public class Inscription extends AppCompatActivity {
 
     }
     private void registerUser() {
-        String name=Eusername.getText().toString().trim();
-        String email=Eemail.getText().toString().trim();
+
+        String email=Eemail.getText().toString().trim().toLowerCase();
+        MAIL=email;
         String password=Epassword.getText().toString().trim();
+        String confirmPassword=EpasswordConfirm.getText().toString().trim();
         String pseudo=Epseudo.getText().toString().trim();
-        register(name,email,password,pseudo);
+        PSEUDO=pseudo;
+        if(!email.equals("") && !pseudo.equals("") && !password.equals("")){
+            if(!password.equals(confirmPassword))Toast.makeText(this,"Les mots de passe doivent être identiques !",Toast.LENGTH_SHORT).show();
+            else register(email,password,pseudo);
+        }
+        else Toast.makeText(this,"Remplissez tous les champs !",Toast.LENGTH_SHORT).show();
     }
 
-    private void register(String name, String email, String password, String pseudo) {
-        String urlsuffix="?username="+name+"&password="+password+"&email="+email+"&pseudo="+pseudo;
+    private void register(String email, String password, String pseudo) {
+        String urlsuffix="?&password="+password+"&email="+email+"&pseudo="+pseudo;
         class RegisterUser extends AsyncTask<String,Void,String> {
 
             ProgressDialog loading;
@@ -98,8 +106,8 @@ public class Inscription extends AppCompatActivity {
                 loading.dismiss();
                 if(s.equals("Inscription validée")){
                     Intent intent=new Intent(Inscription.this, MenuPrincipal.class);
-                    intent.putExtra("mail",Eemail.getText().toString().trim());
-                    intent.putExtra("pseudo",Epseudo.getText().toString().trim());
+                    intent.putExtra("mail",MAIL);
+                    intent.putExtra("pseudo",PSEUDO);
                     startActivity(intent);
                 }
             }

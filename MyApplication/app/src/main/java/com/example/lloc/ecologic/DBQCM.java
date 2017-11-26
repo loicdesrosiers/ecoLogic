@@ -5,10 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Created by lLoïc on 03/11/2017.
@@ -16,7 +12,6 @@ import java.sql.SQLException;
 
 public class DBQCM extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "QCM";
-    public static final String col1 = "IDquestion";
     public static final String col2 = "intitule";
     public static final String col3 = "reponse1";
     public static final String col4 = "reponse2";
@@ -34,7 +29,7 @@ public class DBQCM extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String creerTable = "CREATE TABLE " + TABLE_NAME + " (IDquestion integer primary key ,intitule varchar(300) , reponse1 varchar(100)," +
+        String creerTable = "CREATE TABLE " + TABLE_NAME + " (IDquestion integer primary key AUTOINCREMENT ,intitule varchar(300) , reponse1 varchar(100)," +
                 "reponse2 varchar(100), reponse3 varchar(100),reponse4 varchar(100),bonnereponse varchar(100),explication varchar(300)," +
                 "score integer);";
         db.execSQL(creerTable);
@@ -47,11 +42,11 @@ public class DBQCM extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean ajoutQuestions(int id, String intitulé, String réponse1, String réponse2, String réponse3, String réponse4, String bonneRéponse, String explication, int score) {
+    public boolean ajoutQuestions(String intitulé, String réponse1, String réponse2, String réponse3, String réponse4, String bonneRéponse, String explication, int score) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(col1, id);
+
         contentValues.put(col2, intitulé);
         contentValues.put(col3, réponse1);
         contentValues.put(col4, réponse2);
