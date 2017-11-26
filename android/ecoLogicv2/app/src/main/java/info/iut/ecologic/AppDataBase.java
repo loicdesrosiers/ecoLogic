@@ -11,7 +11,7 @@ import Entites.QCMUniqueSolution;
 import Entites.User;
 
 @Database(entities = {User.class, QCMUniqueSolution.class}, version = 3)
-public abstract class AppDataBase extends RoomDataBase{
+public abstract class AppDataBase extends RoomDatabase{
 
     public abstract UserDAO userDAO();
 

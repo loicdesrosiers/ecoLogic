@@ -4,6 +4,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 @Entity(tableName = "qcmuniquesolution")
@@ -29,6 +31,19 @@ public class QCMUniqueSolution implements Serializable{
     private int idRep;
     @NonNull
     private String explication;
+
+    public QCMUniqueSolution(JSONObject jObject) {
+        this.id = jObject.optInt("id");
+        this.score = jObject.optInt("score");;
+        this.theme = jObject.optString("theme");;
+        this.intitule = jObject.optString("intitule");;
+        this.rep1 = jObject.optString("reponse1");;
+        this.rep2 = jObject.optString("reponse2");;
+        this.rep3 = jObject.optString("reponse3");;
+        this.rep4 = jObject.optString("reponse4");;
+        this.idRep = jObject.optInt("idReponse");;
+        this.explication = jObject.optString("explication");;
+    }
 
     public QCMUniqueSolution(int id, int score, String theme, String intitule, String rep1, String rep2, String rep3, String rep4, int idRep, String explication) {
         this.id = id;

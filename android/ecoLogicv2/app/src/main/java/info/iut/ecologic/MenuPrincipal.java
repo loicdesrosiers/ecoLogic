@@ -2,7 +2,6 @@ package info.iut.ecologic;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
-import android.database.MergeCursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -39,10 +38,24 @@ public class MenuPrincipal extends AppCompatActivity {
     List<QCMUniqueSolution> qcmUniqueSolutionList;
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        stopService(new Intent(this, ServiceMusic.class));
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(this, ServiceMusic.class));
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
-
+        startService(new Intent(this, ServiceMusic.class));
         ETIntitule = findViewById(R.id.ETIntitule);
         ETTheme = findViewById(R.id.ETTheme);
         ETRep1 = findViewById(R.id.ETRep1);
@@ -71,6 +84,7 @@ public class MenuPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MenuPrincipal.this, RecyclerViewUsers.class);
+                i.putExtra("user", user);
                 startActivity(i);
                 finish();
             }

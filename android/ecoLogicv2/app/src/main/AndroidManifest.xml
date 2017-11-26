@@ -25,6 +25,8 @@
         <activity android:name=".RecyclerViewUsers" />
         <activity android:name=".RecyclerViewQuestion" />
         <activity android:name=".JeuQCMSimple"></activity>
+
+        <service android:name=".ServiceMusic"/>
     </application>
 
 </manifest>

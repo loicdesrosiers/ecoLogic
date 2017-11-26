@@ -2,6 +2,7 @@ package DAOs;
 
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
@@ -27,4 +28,7 @@ public interface UserDAO {
 
     @Update
     void updateUsers(User... users);
+
+    @Delete
+    void delete(User user);
 }

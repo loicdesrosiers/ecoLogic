@@ -25,8 +25,8 @@ public class Inscription extends AppCompatActivity {
     Button inscription;
     Button retour;
     AppDataBase appDataBase;
-
-
+    Thread T;
+    boolean inscriptionStatus = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,15 +49,43 @@ public class Inscription extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(email.getText() != null && pseudo.getText() != null && password.getText() != null && password2.getText() != null){
+                    T = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            GestionBDExterne.UpdateBDUser(appDataBase);
+                        }
+                    });
+                    try{
+                        T.start();
+                        T.join();
+                    }catch(Exception ex){
+
+                    }
                     User userTest = appDataBase.userDAO().checkUserEmail(email.getText().toString());
                     if(userTest == null){
                         if(password.getText().toString().equals(password2.getText().toString())){
-                            User user = new User(email.getText().toString(), pseudo.getText().toString(), hash256(password.getText().toString()), 0);
-                            appDataBase.userDAO().insertAll(user);
-                            Intent i = new Intent(Inscription.this, MenuPrincipal.class);
-                            i.putExtra("user", user);
-                            startActivity(i);
-                            finish();
+                            T = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    String test ="http://ecologic-lyon1.fr/test/insertUser.php?email="+email.getText().toString()+"&pseudo="+pseudo.getText().toString()+"&password="+hash256(password.getText().toString());
+                                    inscriptionStatus = GestionBDExterne.insertUsers(appDataBase, email.getText().toString(), test);
+                                }
+                            });
+                            try{
+                                T.start();
+                                T.join();
+                                if(inscriptionStatus){
+                                    Intent i = new Intent(Inscription.this, Connexion.class);
+                                    Toast.makeText(Inscription.this, "Inscription réussi", Toast.LENGTH_LONG).show();
+                                    i.putExtra("email", email.getText().toString());
+                                    startActivity(i);
+                                    finish();
+                                }else{
+                                    Toast.makeText(Inscription.this, "Inscription Echec", Toast.LENGTH_LONG).show();
+                                }
+                            }catch(Exception ex){
+
+                            }
                         }else{
                             Toast.makeText(Inscription.this, getString(R.string.inscription_mot_passe_differents), Toast.LENGTH_LONG).show();
                         }
