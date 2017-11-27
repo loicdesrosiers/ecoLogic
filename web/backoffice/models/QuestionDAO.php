@@ -29,7 +29,7 @@ class QuestionDAO extends DAO {
   }
 
   public function deleteQuestion($id) {
-    $sql = 'DELETE from questionsQcm where id = ?';
+    $sql = 'DELETE from questionQcm where id = ?';
     $res = $this->queryBdd($sql,array($id));
     if($res) {
       return true;
