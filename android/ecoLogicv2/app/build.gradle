@@ -29,4 +29,6 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.google.code.gson:gson:2.6.2'
+    compile 'cn.aigestudio.wheelpicker:WheelPicker:1.1.2'
+
 }

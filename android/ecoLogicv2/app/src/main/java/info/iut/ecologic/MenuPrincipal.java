@@ -109,12 +109,15 @@ public class MenuPrincipal extends AppCompatActivity {
         BTNGO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                qcmUniqueSolutionList = dataBase.qcmUniqueSolutionDAO().getAllQuestions();
+                /*qcmUniqueSolutionList = dataBase.qcmUniqueSolutionDAO().getAllQuestions();
                 Random rd = new Random();
                 QCMUniqueSolution question = qcmUniqueSolutionList.get(rd.nextInt(qcmUniqueSolutionList.size()));
                 Intent intent = new Intent(MenuPrincipal.this, JeuQCMSimple.class);
                 intent.putExtra("user", user);
                 intent.putExtra("question", question);
+                startActivity(intent);
+                finish();*/
+                Intent intent = new Intent(MenuPrincipal.this, Wheel.class);
                 startActivity(intent);
                 finish();
             }
