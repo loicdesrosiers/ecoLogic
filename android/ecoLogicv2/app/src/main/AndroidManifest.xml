@@ -24,9 +24,11 @@
         <activity android:name=".MenuPrincipal" />
         <activity android:name=".RecyclerViewUsers" />
         <activity android:name=".RecyclerViewQuestion" />
-        <activity android:name=".JeuQCMSimple"></activity>
+        <activity android:name=".JeuQCMSimple" />
 
-        <service android:name=".ServiceMusic"/>
+        <service android:name=".ServiceMusic" />
+
+        <activity android:name=".Wheel"></activity>
     </application>
 
 </manifest>
